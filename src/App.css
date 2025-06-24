@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-ul {
+/* ul {
     display:flex;
     justify-content:center;
     gap:2.5rem;
@@ -28,4 +28,4 @@ ul li img {
     margin: 0 auto;
     width:50px; 
     height: auto;
-}
+} */

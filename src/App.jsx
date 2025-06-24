@@ -1,15 +1,20 @@
-import { useState } from "react";
 import "./App.css";
-import { NavBar } from "./components/NavBar";
+import { BrowserRouter, Routes, Route, Link } from "react-router";
+import  NavBar  from "./components/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <BrowserRouter>
     <NavBar />
-    <ItemListContainer text="Bienvenido a SuperMercado M&M" />
-    </>
+    <Routes>
+      <Route path="/" element={<ItemListContainer />} />
+      <Route path="/category/:categoryName" element={<ItemListContainer />} />
+      <Route path="/item/:id" element={<ItemDetailContainer />} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
