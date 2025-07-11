@@ -4,18 +4,19 @@ import Count from './ItemCount';
 
 function ItemDetail({ detail }) {
   return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src= {detail.thumbnail} />
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <Card style={{width: '18rem' }}>
+            <Card.Img variant="top" src= {detail.imagen} />
             <Card.Body>
-                <Card.Title> {detail.title} </Card.Title>
-                <Card.Title> ${detail.price} </Card.Title>
+                <Card.Title> {detail.nombre} </Card.Title>
+                <Card.Title> ${detail.precio} </Card.Title>
                 <Card.Text>
-                    {detail.description}
+                    {detail.descripcion}
                 </Card.Text>
-                <Button variant="primary">Agregar al Carrito</Button>
-                <Count />
+                <Count item={detail} />
             </Card.Body>
         </Card>
+    </div>
   )
 }
 

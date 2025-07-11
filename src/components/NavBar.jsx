@@ -4,18 +4,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router";
-import { useState, useEffect } from "react";
 
- function NavBar() {
-    const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        fetch('https://dummyjson.com/products/category-list')
-        .then(res => res.json())
-        .then(cat => setCategories(cat));
-    }, []);
-
-    
+function NavBar() {
     return (
     <Navbar expand="lg" bg= "dark" data-bs-theme="dark">
       <Container>
@@ -24,8 +15,36 @@ import { useState, useEffect } from "react";
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Categorias" id="basic-nav-dropdown">
-            {categories.map(categorie => (<NavDropdown.Item to={`/category/${categorie}`} as={Link} key={categorie}>{categorie}</NavDropdown.Item>
-            ))}
+              <NavDropdown.Item
+                to='/category/electrodomesticos'
+                as={Link}
+                >
+                Electrodomesticos
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to='/category/Papeles'
+                as={Link}
+                >
+                Papeles
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to='/category/Quesos'
+                as={Link}
+                >
+                Quesos
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to='/category/Harinas'
+                as={Link}
+                >
+                Harinas
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                to='/category/Gaseosas'
+                as={Link}
+                >
+                Gaseosas
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

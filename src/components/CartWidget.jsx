@@ -1,8 +1,12 @@
+import Button from 'react-bootstrap/Button';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
+
+
 export function CartWidget() {
+  const {cantidadEnCarrito} = useContext(CartContext)
+  const cantidad = cantidadEnCarrito()
   return (
-    <div>
-      <img src="../.././public/Assets/carrito.png" alt="CartWidget" style={{width: "50px", height: "auto"}} />
-      <span>1</span>
-    </div>
+  <Button variant="success">Carrito {cantidad} </Button>
   );
 }

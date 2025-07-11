@@ -1,29 +1,28 @@
 import { useState, useEffect } from "react";
 import { useParams} from "react-router";
 import ItemList from "./ItemList";
+import { getProdcutos, getProductsByCategory } from "../firebase/db";
 
 
-
-export function ItemListContainer() {
+function ItemListContainer() {
   const [items, setItems] = useState([])
   const {categoryName} = useParams();
 
   useEffect(() => {
-    if (categoryName){
-      fetch(`https://dummyjson.com/products/category/${categoryName}`)
-        .then(res => res.json())
-        .then(data => setItems(data.products));
+    if (categoryName) {
+      getProductsByCategory(categoryName)
+      .then(productos => setItems(productos))
     } else {
-      fetch('https://dummyjson.com/products')
-        .then(res => res.json())
-        .then(data => setItems(data.products));
+      getProdcutos()
+      .then(productos => setItems(productos))
     }
 
+
 }, [categoryName])
-
-
 
   return (
     <ItemList items={items} text= "Bienvenido a SuperMercado M&M" />
   );
 }
+
+export default ItemListContainer;
