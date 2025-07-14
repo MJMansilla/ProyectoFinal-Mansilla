@@ -12,7 +12,7 @@ import {app} from "./config.js"
 
 const db = getFirestore(app)
 
-export const getProdcutos = async () => {
+export const getProductos = async () => {
     const documentos = await getDocs(collection(db, "productos"))
     const productos = []
 

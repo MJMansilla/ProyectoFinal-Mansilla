@@ -1,4 +1,3 @@
-import { use } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router';
@@ -7,7 +6,7 @@ function Item ({prod}) {
   const navigate = useNavigate();
     return (
     <Card  style={{ width: '18rem' }}>
-      <Card.Img variant="top" src= {prod.imagen} />
+      <Card.Img variant="top" src= {prod.imagen} alt={`Imagen de ${prod.nombre}`} />
       <Card.Body>
         <Card.Title>{prod.nombre}</Card.Title>
         <Card.Text> {prod.descripcion}

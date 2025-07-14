@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { getProduct } from "../firebase/db"
 import ItemDetail from "./ItemDetail"
-import Item from "./Item"
 
 
 export default function ItemDetailContainer() {
@@ -12,6 +11,7 @@ export default function ItemDetailContainer() {
     useEffect(()=>{
           getProduct(id)
           .then(producto => setDetail(producto))
+          .catch(error => console.error(error))
     }, [id])
 
   return (

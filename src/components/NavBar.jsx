@@ -10,7 +10,12 @@ function NavBar() {
     return (
     <Navbar expand="lg" bg= "dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand to={'/'} as={Link} >SuperMercado M&M</Navbar.Brand>
+        <Navbar.Brand to={'/'} as={Link} > <img src="../.././public/Assets/logo.png" alt="Logo"
+    width="40"
+    height="40"
+    className="d-inline-block align-top me-2"
+    style={{ objectFit: 'contain' }}
+  />SuperMercado M&M</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

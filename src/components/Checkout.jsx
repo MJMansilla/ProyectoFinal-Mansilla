@@ -3,10 +3,16 @@ import Form from "react-bootstrap/Form"
 import { useCart } from "../context/useCart"
 import { createOrder } from "../firebase/db"
 import { serverTimestamp } from "firebase/firestore"
+import { useNavigate } from "react-router"
+import { ToastContainer, toast } from "react-toastify"
+
 
 
 function Checkout () {
-    const { cart } = useCart()
+    const { cart, vaciarCarrito } = useCart()
+    const navigate = useNavigate()
+    const notify = () => toast("Compra realizada con éxito!");
+
     const handleSubmit = e => {
         e.preventDefault()
         const form = e.target
@@ -21,10 +27,13 @@ function Checkout () {
             productos: cart,
             time: serverTimestamp(),
         })
+        notify()
+        vaciarCarrito()
+        navigate("/cart")
     }
 
     return (
-        <div className = 'd-flex jusfify-content-center mt-5'>
+        <div className = 'd-flex justify-content-center mt-5'>
             <Form className = 'w-50' onSubmit={handleSubmit} >
                 <Form.Group className="mb-3" controlId= "email">
                     <Form.Label>Email</Form.Label>
@@ -36,7 +45,7 @@ function Checkout () {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId= "telefono">
                     <Form.Label>Telefono</Form.Label>
-                    <Form.Control type= "number" placeholder="+5491155338811" required />
+                    <Form.Control type= "text" placeholder="+5491155338811" required />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">

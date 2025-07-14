@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams} from "react-router";
+import { useParams } from "react-router"
 import ItemList from "./ItemList";
-import { getProdcutos, getProductsByCategory } from "../firebase/db";
+import { getProductos, getProductsByCategory } from "../firebase/db";
 
 
 function ItemListContainer() {
@@ -13,8 +13,9 @@ function ItemListContainer() {
       getProductsByCategory(categoryName)
       .then(productos => setItems(productos))
     } else {
-      getProdcutos()
+      getProductos()
       .then(productos => setItems(productos))
+      .catch(console.error)
     }
 
 

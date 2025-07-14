@@ -5,7 +5,7 @@ export default function CartProvider({children}) {
   const [cart, setCart] = useState([])
   
   const agregarAlCarrito = (item) => {
-    const estaEnCarrito = cart.some(item => item.id === item.id )
+    const estaEnCarrito = cart.some(prod => prod.id === item.id)
     if (estaEnCarrito) {
       const productoRepetido = cart.find(prod => prod.id === item.id)
       const cartSinRepetidos = cart.filter(prod => prod.id !== item.id)
@@ -18,6 +18,9 @@ export default function CartProvider({children}) {
     const cartSinEliminado = cart.filter(item => item.id !== id)
     setCart(cartSinEliminado)
   }
+
+
+  const vaciarCarrito = () => setCart([])
 
   const cantidadEnCarrito = () => {
     const cantidad = cart.map (prod => prod.count).reduce((a, b) => a + b, 0)
@@ -32,7 +35,7 @@ export default function CartProvider({children}) {
 
   return (
     <CartContext.Provider
-      value={{cart, agregarAlCarrito, cantidadEnCarrito, eliminarDelCarrito, getTotal}}>
+      value={{cart, agregarAlCarrito, cantidadEnCarrito, eliminarDelCarrito, getTotal, vaciarCarrito}}>
         {children}
     </CartContext.Provider>
   )
